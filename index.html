@@ -9,8 +9,8 @@
   
     eventSource.onmessage = (e) => {
       var newElement = document.createElement("li");
-      var obj = JSON.parse(e.data);
-      newElement.innerHTML = obj.timestamp;
+      var eventObj = JSON.parse(e.data);
+      newElement.innerHTML = `message: ${eventObj.message}, timestamp: ${eventObj.timestamp}`;
       eventList.appendChild(newElement);
     };
   </script>
