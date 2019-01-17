@@ -1,0 +1,17 @@
+<html>
+  <body>
+    <h1>Server side events received:</h1>
+    <list id="eventList"></list>
+  </body>
+  <script>
+    const eventSource = new EventSource('http://localhost:3000/stream');
+    const eventList = document.getElementById("eventList");
+  
+    eventSource.onmessage = (e) => {
+      var newElement = document.createElement("li");
+      var obj = JSON.parse(e.data);
+      newElement.innerHTML = obj.timestamp;
+      eventList.appendChild(newElement);
+    };
+  </script>
+</html>
